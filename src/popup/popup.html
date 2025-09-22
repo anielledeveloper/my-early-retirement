@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Financial Independency</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Terms and Conditions Modal -->
+    <div id="terms-modal" class="terms-modal">
+        <div class="terms-modal-content">
+            <h2>Termos e Condições</h2>
+            <div class="terms-content">
+                <p><strong>Importante:</strong> Esta extensão opera de forma completamente local e privada.</p>
+                
+                <h3>🔒 Privacidade e Dados</h3>
+                <ul>
+                    <li><strong>Não coletamos dados pessoais:</strong> Não enviamos nenhuma informação para servidores externos</li>
+                    <li><strong>Não salvamos dados financeiros externamente:</strong> Todos os dados ficam apenas no seu dispositivo</li>
+                    <li><strong>Armazenamento local:</strong> Usamos apenas o armazenamento local do Chrome (chrome.storage.local)</li>
+                    <li><strong>Sem sincronização:</strong> Os dados não são sincronizados entre dispositivos</li>
+                    <li><strong>Sem rastreamento:</strong> Não há coleta de dados de uso ou analytics</li>
+                </ul>
+
+                <h3>📊 Dados de Exemplo</h3>
+                <ul>
+                    <li><strong>Dados iniciais são exemplos:</strong> A extensão vem com dados fictícios para demonstração</li>
+                    <li><strong>Não são dados reais:</strong> Os valores iniciais não representam informações financeiras reais</li>
+                    <li><strong>Fins educacionais:</strong> Os exemplos servem apenas para ensinar como usar a extensão</li>
+                </ul>
+
+                <h3>💰 Dados Financeiros</h3>
+                <ul>
+                    <li><strong>Local apenas:</strong> Seus investimentos e metas ficam apenas no seu navegador</li>
+                    <li><strong>Sem backup externo:</strong> Não fazemos backup em servidores externos</li>
+                    <li><strong>Controle total:</strong> Você tem controle completo sobre seus dados</li>
+                    <li><strong>Dispositivo único:</strong> Os dados ficam apenas no dispositivo onde foram criados</li>
+                </ul>
+
+                <h3>⚖️ Responsabilidade</h3>
+                <ul>
+                    <li><strong>Sem responsabilidade financeira:</strong> Não nos responsabilizamos por decisões financeiras</li>
+                    <li><strong>Uso por sua conta e risco:</strong> Esta é uma ferramenta de acompanhamento, não aconselhamento</li>
+                    <li><strong>Sem garantias:</strong> Não garantimos precisão dos cálculos</li>
+                    <li><strong>Dados de exemplo:</strong> Não nos responsabilizamos pelo uso dos dados de exemplo</li>
+                </ul>
+
+                <p><strong>Para continuar usando a extensão, você deve aceitar estes termos.</strong></p>
+            </div>
+            
+            <div class="terms-actions">
+                <label class="terms-checkbox-label">
+                    <input type="checkbox" id="terms-accept-checkbox">
+                    <span>Eu li e aceito os termos e condições</span>
+                </label>
+                <div class="terms-buttons">
+                    <button id="terms-accept-button" class="btn btn-primary" disabled>Aceitar e Continuar</button>
+                    <button id="terms-reject-button" class="btn btn-danger">Recusar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-top">
+                <h1>My Financial Independency</h1>
+                <button id="terms-review-button" class="btn btn-danger btn-large" style="display: none;">REVISAR TERMOS PARA USAR A APLICAÇÃO</button>
+            </div>
+            <div class="progress-section">
+                <div class="progress-info">
+                    <span id="progress-percentage">0.00000%</span>
+                    <span id="current-amount">R$ 0,0000</span>
+                </div>
+                <div class="progress-bar-container">
+                    <div id="progress-bar" class="progress-bar"></div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Time Remaining -->
+            <section class="time-section">
+                <h2>Tempo Restante</h2>
+                <div id="time-remaining" class="time-display">∞</div>
+            </section>
+
+            <!-- Earnings Today -->
+            <section class="earnings-today-section">
+                <h2>Ganhos Reais Hoje</h2>
+                <div id="earnings-today" class="earnings-display">R$ 0,0000</div>
+            </section>
+
+            <!-- Passive Income (Interest) -->
+            <section class="passive-income-section">
+                <h2>Renda Passiva (Juros)</h2>
+                <div class="earnings-grid">
+                    <div class="earnings-item">
+                        <span class="earnings-label">Por segundo:</span>
+                        <span id="earnings-per-second" class="earnings-value">R$ 0,0000</span>
+                    </div>
+                    <div class="earnings-item">
+                        <span class="earnings-label">Por minuto:</span>
+                        <span id="earnings-per-minute" class="earnings-value">R$ 0,0000</span>
+                    </div>
+                    <div class="earnings-item">
+                        <span class="earnings-label">Por dia:</span>
+                        <span id="earnings-per-day" class="earnings-value">R$ 0,0000</span>
+                    </div>
+                    <div class="earnings-item">
+                        <span class="earnings-label">Por semana:</span>
+                        <span id="earnings-per-week" class="earnings-value">R$ 0,0000</span>
+                    </div>
+                    <div class="earnings-item">
+                        <span class="earnings-label">Por mês:</span>
+                        <span id="earnings-per-month" class="earnings-value">R$ 0,0000</span>
+                    </div>
+                    <div class="earnings-item">
+                        <span class="earnings-label">Por ano:</span>
+                        <span id="earnings-per-year" class="earnings-value">R$ 0,0000</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Savings -->
+            <section class="savings-section">
+                <h2>Poupança</h2>
+                <div class="savings-grid">
+                    <div class="savings-item">
+                        <span class="savings-label">Por mês:</span>
+                        <span id="savings-per-month" class="savings-value">R$ 0,00</span>
+                    </div>
+                    <div class="savings-item">
+                        <span class="savings-label">Por ano:</span>
+                        <span id="savings-per-year" class="savings-value">R$ 0,00</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- User Configuration -->
+            <section class="configuration-section">
+                <h2>Configurações</h2>
+                <div class="config-grid">
+                    <div class="config-item">
+                        <label for="goal-amount">Valor da Meta (R$)</label>
+                        <input type="number" id="goal-amount" placeholder="1000000" min="0" step="0.01">
+                    </div>
+                    <div class="config-item">
+                        <label for="inflation-rate">Inflação (últimos 12 meses, %)</label>
+                        <input type="number" id="inflation-rate" placeholder="4.5" min="0" step="0.01">
+                    </div>
+                    <div class="config-item">
+                        <label for="monthly-savings">Valor Poupado por Mês (R$)</label>
+                        <input type="number" id="monthly-savings" placeholder="5000" min="0" step="0.01">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Investments -->
+            <section class="investments-section">
+                <div class="investments-header">
+                    <h2>Investimentos</h2>
+                    <button id="add-investment" class="btn btn-primary">+ Adicionar</button>
+                </div>
+                <div id="investments-container" class="investments-container">
+                    <!-- Investment items will be dynamically added here -->
+                </div>
+                <div class="investments-save-section">
+                    <button id="save-data" class="btn btn-primary">Salvar Dados</button>
+                    <button id="reset-data" class="btn btn-danger">Resetar Dados</button>
+                </div>
+            </section>
+
+            <!-- Explanations -->
+            <details id="explanation" class="explanation-section">
+                <summary>Como Funciona</summary>
+                <div class="explanation-content">
+                    <p>Esta extensão calcula seu progresso em tempo real para a independência financeira usando juros compostos reais (descontada a inflação) e suas economias mensais.</p>
+                    <p>Os cálculos são atualizados a cada segundo, mostrando:</p>
+                    <ul>
+                        <li><strong>Valor Acumulado:</strong> Soma de todos os seus investimentos com juros compostos</li>
+                        <li><strong>Renda Passiva:</strong> Ganhos apenas dos investimentos (sem incluir poupança)</li>
+                        <li><strong>Poupança:</strong> Contribuições mensais fixas</li>
+                        <li><strong>Tempo Restante:</strong> Estimativa baseada no crescimento atual</li>
+                    </ul>
+                    <p><strong>Importante:</strong> Após clicar em "SALVAR DADOS", a barra de progresso será recalculada com base nos novos valores configurados, atualizando automaticamente todos os cálculos em tempo real.</p>
+                </div>
+            </details>
+
+            <details id="rentability-explanation" class="explanation-section">
+                <summary>Taxa de Rentabilidade</summary>
+                <div class="explanation-content">
+                    <p>A taxa de rentabilidade é ajustada pela inflação para mostrar o ganho real:</p>
+                    <p><strong>Taxa Real = [(1 + Taxa Nominal) / (1 + Inflação)] - 1</strong></p>
+                    <p>Exemplo: Se você tem 13% ao ano e a inflação é 4.5%, sua taxa real é aproximadamente 8.1%.</p>
+                </div>
+            </details>
+        </main>
+    </div>
+</body>
+</html>
