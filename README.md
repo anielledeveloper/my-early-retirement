@@ -13,6 +13,10 @@ A **locally-only** Chrome extension that helps you track your progress towards f
 - **Data Persistence**: All data is saved locally on your device
 - **Modern UI**: Clean, professional interface with Flat UI Colors
 
+![Screen](screenshots/1.png)
+![Screen](screenshots/2.png)
+![Screen](screenshots/3.png)
+
 ## Installation
 
 ### Development Setup
